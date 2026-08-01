@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmacy Inventory Dashboard</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header>
+        <h1>Pharmacy Order & Inventory Management</h1>
+        <p>Manage medicines, update stock, place orders, and review low-stock alerts.</p>
+      </header>
+
+      <div class="grid">
+        <section class="card">
+          <h2>Add Medicine</h2>
+          <form id="medicine-form" class="stack">
+            <div class="inline-fields">
+              <label>
+                Name
+                <input id="medicine-name" required />
+              </label>
+              <label>
+                Category
+                <input id="medicine-category" required />
+              </label>
+            </div>
+            <div class="inline-fields">
+              <label>
+                Manufacturer
+                <input id="medicine-manufacturer" required />
+              </label>
+              <label>
+                Price
+                <input id="medicine-price" type="number" step="0.01" min="0" required />
+              </label>
+            </div>
+            <div class="inline-fields">
+              <label>
+                Expiry Date
+                <input id="medicine-expiry" type="date" required />
+              </label>
+              <label>
+                Initial Quantity
+                <input id="medicine-quantity" type="number" min="0" required />
+              </label>
+            </div>
+            <label>
+              Reorder Level
+              <input id="medicine-reorder" type="number" min="0" required />
+            </label>
+            <button type="submit">Add Medicine</button>
+            <p id="medicine-status" class="muted">Ready to add a medicine.</p>
+          </form>
+        </section>
+
+        <section class="card">
+          <h2>Update Stock</h2>
+          <form id="stock-form" class="stack">
+            <label>
+              Medicine
+              <select id="stock-medicine-id"></select>
+            </label>
+            <label>
+              New Quantity
+              <input id="stock-quantity" type="number" min="0" required />
+            </label>
+            <button type="submit" class="secondary">Update Stock</button>
+            <p id="stock-status" class="muted">Select a medicine to update its inventory.</p>
+          </form>
+        </section>
+
+        <section class="card">
+          <h2>Place Order</h2>
+          <form id="order-form" class="stack">
+            <div class="inline-fields">
+              <label>
+                Customer Name
+                <input id="order-customer-name" required />
+              </label>
+              <label>
+                Customer Phone
+                <input id="order-customer-phone" required />
+              </label>
+            </div>
+            <div class="inline-fields">
+              <label>
+                Add Medicine
+                <select id="order-medicine-select"></select>
+              </label>
+              <label>
+                Quantity
+                <input id="order-medicine-quantity" type="number" min="1" value="1" />
+              </label>
+            </div>
+            <button type="button" id="add-order-item" class="secondary">Add Item</button>
+            <label>Order Items</label>
+            <ul id="order-items" class="order-item-list"></ul>
+            <button type="submit">Place Order</button>
+            <p id="order-status" class="muted">Add items and place a new order.</p>
+          </form>
+        </section>
+      </div>
+
+      <div class="grid" style="margin-top: 20px;">
+        <section class="card">
+          <h2>Medicine Inventory</h2>
+          <ul id="medicine-list" class="list"></ul>
+        </section>
+
+        <section class="card">
+          <h2>Low Stock Alerts</h2>
+          <ul id="alerts-list" class="list"></ul>
+          <p id="alerts-status" class="muted"></p>
+        </section>
+
+        <section class="card">
+          <h2>Order Details</h2>
+          <pre id="order-details">Loading order details...</pre>
+        </section>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
