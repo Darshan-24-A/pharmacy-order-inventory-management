@@ -6,7 +6,8 @@ import {
 
     getMedicineList,
 
-    updateStock
+    updateStock,
+    getLowStockMedicines
 
 } from "../controllers/medicineController.js";
 
@@ -17,5 +18,6 @@ router.post("/", addMedicine);
 router.get("/", getMedicineList);
 
 router.put("/:id/stock", updateStock);
+router.get("/low-stock", getLowStockMedicines);
 
 export default router;

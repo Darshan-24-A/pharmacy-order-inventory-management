@@ -4,7 +4,8 @@ import {
 
     getMedicineListService,
 
-    updateStockService
+    updateStockService,
+    getLowStockMedicinesService
 
 } from "../services/medicineService.js";
 
@@ -118,6 +119,30 @@ export const updateStock = async (req, res) => {
 
             message: error.message
 
+        });
+
+    }
+
+};
+// =========================
+// Get Low Stock Medicines
+// =========================
+export const getLowStockMedicines = async (req, res) => {
+
+    try {
+
+        const medicines = await getLowStockMedicinesService();
+
+        res.status(200).json({
+            success: true,
+            data: medicines
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            success: false,
+            message: error.message
         });
 
     }

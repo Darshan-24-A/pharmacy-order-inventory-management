@@ -1,6 +1,7 @@
 import {
     placeOrderService,
-    getOrderDetailsService
+    getOrderDetailsService,
+    getAllOrdersService
 } from "../services/orderService.js";
 
 
@@ -59,6 +60,27 @@ export const getOrderDetails = async (req, res) => {
 
             message: error.message
 
+        });
+
+    }
+
+};
+export const getAllOrders = async (req, res) => {
+
+    try {
+
+        const orders = await getAllOrdersService();
+
+        res.status(200).json({
+            success: true,
+            data: orders
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            success: false,
+            message: error.message
         });
 
     }

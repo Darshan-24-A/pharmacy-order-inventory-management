@@ -5,7 +5,8 @@ import {
     createInventory,
     getAllMedicines,
     getInventoryByMedicineId,
-    updateMedicineStock
+    updateMedicineStock,
+    getLowStockMedicines
 } from "../repositories/medicineRepository.js";
 
 
@@ -97,5 +98,13 @@ export const updateStockService = async (
         lowStock
 
     };
+
+};
+// =========================
+// Get Low Stock Medicines
+// =========================
+export const getLowStockMedicinesService = async () => {
+
+    return await getLowStockMedicines();
 
 };

@@ -130,3 +130,19 @@ export const updateMedicineStock = async (
     return result.rows[0];
 
 };
+// =========================
+// Get Low Stock Medicines
+// =========================
+export const getLowStockMedicines = async () => {
+
+    const query = `
+        SELECT *
+        FROM medicines
+        WHERE quantity <= reorder_level
+        ORDER BY quantity ASC
+    `;
+
+    const result = await pool.query(query);
+
+    return result.rows;
+};

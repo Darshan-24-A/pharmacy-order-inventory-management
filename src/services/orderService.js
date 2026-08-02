@@ -5,7 +5,8 @@ import {
     createOrderItem,
     getMedicine,
     deductStock,
-    getOrderDetails
+    getOrderDetails,
+    getAllOrders
 } from "../repositories/orderRepository.js";
 
 
@@ -98,5 +99,10 @@ export const getOrderDetailsService = async (orderId) => {
         }))
 
     };
+
+};
+export const getAllOrdersService = async () => {
+
+    return await getAllOrders();
 
 };

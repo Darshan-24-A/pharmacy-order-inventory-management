@@ -119,3 +119,14 @@ export const getOrderDetails = async (orderId) => {
 
     return result.rows;
 };
+export const getAllOrders = async () => {
+
+    const result = await pool.query(`
+        SELECT *
+        FROM orders
+        ORDER BY id DESC
+    `);
+
+    return result.rows;
+
+};
